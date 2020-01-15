@@ -19,7 +19,7 @@ clean_deaths <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_deaths",
-                         save_path = "",
+                         save_path = "output_data",
                          save_format = "csv") {
 
   file_names <- list.files(dir_path)
@@ -42,18 +42,25 @@ clean_deaths <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
       summarise_at(.vars = vars(M0.1:F100.101p),
                    sum) %>%
       melt(id.vars = "ETH.group") %>%
+
       # clean age variable
       separate(variable, c("age", NA)) %>%
-      mutate(age = gsub(x = age, 'M|F', '')) %>%
+      separate(age, c("sex", "age"), sep = 1) %>%
+      # mutate(age = gsub(x = age, 'M|F', '')) %>%  # combine sex
+
+      # group ages in to 5 year ranges
       mutate(agegrp = cut(as.numeric(age),
-                          seq(0,105, by = 5), right = FALSE)) %>%
+                          breaks = seq(0, 105, by = 5),
+                          right = FALSE)) %>%
       group_by(ETH.group,
-               agegrp) %>%
+               agegrp,
+               sex) %>%
       summarise(deaths = sum(value)) %>%
       mutate(year = year_name)
 
       #%>%
-    # merge(ethnic_groups, all = TRUE)
+      # add ethnicity description
+      #merge(ethnic_groups, all = TRUE)
   }
 
   deaths_dat <- do.call(rbind, deaths_year)

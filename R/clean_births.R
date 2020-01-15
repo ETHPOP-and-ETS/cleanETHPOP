@@ -11,6 +11,7 @@
 #' @return
 #' @export
 #' @import dplyr
+#' @importFrom readr read_csv
 #' @examples
 #'   clean_births()
 #'
@@ -18,7 +19,7 @@ clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_births",
-                         save_path = "",
+                         save_path = "output_data",
                          save_format = "csv") {
 
   file_names <- list.files(dir_path)
