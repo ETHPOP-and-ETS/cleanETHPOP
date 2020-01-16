@@ -1,6 +1,10 @@
 {
-    "path" : "~/R/cleanETHPOP",
+    "path" : "~/R/cleanETHPOP/R",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 1
+        },
         {
             "ascending" : true,
             "columnIndex" : 2
