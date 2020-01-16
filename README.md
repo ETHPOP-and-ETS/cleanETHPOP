@@ -27,4 +27,4 @@ devtools::install_github("n8thangreen/cleanETHPOP")
 ## Example
 
 For a vignette of how to use cleanETHPOP see
-[here](https://n8thangreen.github.io/cleanETHPOP/how-to-use-package).
+[here](https://n8thangreen.github.io/cleanETHPOP/how-to-use-package.html).
