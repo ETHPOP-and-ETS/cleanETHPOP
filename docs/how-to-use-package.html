@@ -306,7 +306,613 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(cleanETHPOP)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(cleanETHPOP)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt; </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; </span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">library</span>(readr)</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">library</span>(reshape2)</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; </span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; Attaching package: &#39;reshape2&#39;</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; </span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt;     smiths</span></span></code></pre></div>
+<p>Clean birth data</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">clean_births</span>()</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a></span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-46"><a href="#cb2-46"></a></span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a></span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a></span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-54"><a href="#cb2-54"></a></span>
+<span id="cb2-55"><a href="#cb2-55"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-56"><a href="#cb2-56"></a></span>
+<span id="cb2-57"><a href="#cb2-57"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-58"><a href="#cb2-58"></a></span>
+<span id="cb2-59"><a href="#cb2-59"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-60"><a href="#cb2-60"></a></span>
+<span id="cb2-61"><a href="#cb2-61"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-62"><a href="#cb2-62"></a></span>
+<span id="cb2-63"><a href="#cb2-63"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-64"><a href="#cb2-64"></a></span>
+<span id="cb2-65"><a href="#cb2-65"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-66"><a href="#cb2-66"></a></span>
+<span id="cb2-67"><a href="#cb2-67"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-68"><a href="#cb2-68"></a></span>
+<span id="cb2-69"><a href="#cb2-69"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-70"><a href="#cb2-70"></a></span>
+<span id="cb2-71"><a href="#cb2-71"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-72"><a href="#cb2-72"></a></span>
+<span id="cb2-73"><a href="#cb2-73"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-74"><a href="#cb2-74"></a></span>
+<span id="cb2-75"><a href="#cb2-75"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-76"><a href="#cb2-76"></a></span>
+<span id="cb2-77"><a href="#cb2-77"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-78"><a href="#cb2-78"></a></span>
+<span id="cb2-79"><a href="#cb2-79"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-80"><a href="#cb2-80"></a></span>
+<span id="cb2-81"><a href="#cb2-81"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-82"><a href="#cb2-82"></a></span>
+<span id="cb2-83"><a href="#cb2-83"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-84"><a href="#cb2-84"></a></span>
+<span id="cb2-85"><a href="#cb2-85"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-86"><a href="#cb2-86"></a></span>
+<span id="cb2-87"><a href="#cb2-87"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-88"><a href="#cb2-88"></a></span>
+<span id="cb2-89"><a href="#cb2-89"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-90"><a href="#cb2-90"></a></span>
+<span id="cb2-91"><a href="#cb2-91"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-92"><a href="#cb2-92"></a></span>
+<span id="cb2-93"><a href="#cb2-93"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-94"><a href="#cb2-94"></a></span>
+<span id="cb2-95"><a href="#cb2-95"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-96"><a href="#cb2-96"></a></span>
+<span id="cb2-97"><a href="#cb2-97"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-98"><a href="#cb2-98"></a></span>
+<span id="cb2-99"><a href="#cb2-99"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-100"><a href="#cb2-100"></a></span>
+<span id="cb2-101"><a href="#cb2-101"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb2-102"><a href="#cb2-102"></a><span class="co">#&gt; # A tibble: 600 x 5</span></span>
+<span id="cb2-103"><a href="#cb2-103"></a><span class="co">#&gt;    ETH.group tot_births mbirths fbirths year </span></span>
+<span id="cb2-104"><a href="#cb2-104"></a><span class="co">#&gt;    &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb2-105"><a href="#cb2-105"></a><span class="co">#&gt;  1 BAN           12971.   6644.   6327. 2011 </span></span>
+<span id="cb2-106"><a href="#cb2-106"></a><span class="co">#&gt;  2 BLA           21226.  10872.  10354. 2011 </span></span>
+<span id="cb2-107"><a href="#cb2-107"></a><span class="co">#&gt;  3 BLC            6479.   3319.   3161. 2011 </span></span>
+<span id="cb2-108"><a href="#cb2-108"></a><span class="co">#&gt;  4 CHI            4441.   2275.   2166. 2011 </span></span>
+<span id="cb2-109"><a href="#cb2-109"></a><span class="co">#&gt;  5 IND           26853.  13754.  13099. 2011 </span></span>
+<span id="cb2-110"><a href="#cb2-110"></a><span class="co">#&gt;  6 MIX           36887.  18894.  17994. 2011 </span></span>
+<span id="cb2-111"><a href="#cb2-111"></a><span class="co">#&gt;  7 OAS           13712.   7023.   6689. 2011 </span></span>
+<span id="cb2-112"><a href="#cb2-112"></a><span class="co">#&gt;  8 OBL            3833.   1963.   1870. 2011 </span></span>
+<span id="cb2-113"><a href="#cb2-113"></a><span class="co">#&gt;  9 OTH            4704.   2410.   2295. 2011 </span></span>
+<span id="cb2-114"><a href="#cb2-114"></a><span class="co">#&gt; 10 PAK           33370.  17092.  16278. 2011 </span></span>
+<span id="cb2-115"><a href="#cb2-115"></a><span class="co">#&gt; # ... with 590 more rows</span></span></code></pre></div>
+<p>Clean death data</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">clean_deaths</span>()</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a></span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a></span>
+<span id="cb3-43"><a href="#cb3-43"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a></span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a></span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a></span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a></span>
+<span id="cb3-53"><a href="#cb3-53"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a></span>
+<span id="cb3-55"><a href="#cb3-55"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a></span>
+<span id="cb3-57"><a href="#cb3-57"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-58"><a href="#cb3-58"></a></span>
+<span id="cb3-59"><a href="#cb3-59"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-60"><a href="#cb3-60"></a></span>
+<span id="cb3-61"><a href="#cb3-61"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a></span>
+<span id="cb3-63"><a href="#cb3-63"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-64"><a href="#cb3-64"></a></span>
+<span id="cb3-65"><a href="#cb3-65"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-66"><a href="#cb3-66"></a></span>
+<span id="cb3-67"><a href="#cb3-67"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-68"><a href="#cb3-68"></a></span>
+<span id="cb3-69"><a href="#cb3-69"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-70"><a href="#cb3-70"></a></span>
+<span id="cb3-71"><a href="#cb3-71"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-72"><a href="#cb3-72"></a></span>
+<span id="cb3-73"><a href="#cb3-73"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a></span>
+<span id="cb3-75"><a href="#cb3-75"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-76"><a href="#cb3-76"></a></span>
+<span id="cb3-77"><a href="#cb3-77"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-78"><a href="#cb3-78"></a></span>
+<span id="cb3-79"><a href="#cb3-79"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-80"><a href="#cb3-80"></a></span>
+<span id="cb3-81"><a href="#cb3-81"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-82"><a href="#cb3-82"></a></span>
+<span id="cb3-83"><a href="#cb3-83"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-84"><a href="#cb3-84"></a></span>
+<span id="cb3-85"><a href="#cb3-85"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-86"><a href="#cb3-86"></a></span>
+<span id="cb3-87"><a href="#cb3-87"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-88"><a href="#cb3-88"></a></span>
+<span id="cb3-89"><a href="#cb3-89"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-90"><a href="#cb3-90"></a></span>
+<span id="cb3-91"><a href="#cb3-91"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-92"><a href="#cb3-92"></a></span>
+<span id="cb3-93"><a href="#cb3-93"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-94"><a href="#cb3-94"></a></span>
+<span id="cb3-95"><a href="#cb3-95"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-96"><a href="#cb3-96"></a></span>
+<span id="cb3-97"><a href="#cb3-97"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-98"><a href="#cb3-98"></a></span>
+<span id="cb3-99"><a href="#cb3-99"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-100"><a href="#cb3-100"></a></span>
+<span id="cb3-101"><a href="#cb3-101"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb3-102"><a href="#cb3-102"></a><span class="co">#&gt; # A tibble: 25,200 x 5</span></span>
+<span id="cb3-103"><a href="#cb3-103"></a><span class="co">#&gt; # Groups:   ETH.group, agegrp [252]</span></span>
+<span id="cb3-104"><a href="#cb3-104"></a><span class="co">#&gt;    ETH.group agegrp  sex   deaths year </span></span>
+<span id="cb3-105"><a href="#cb3-105"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb3-106"><a href="#cb3-106"></a><span class="co">#&gt;  1 BAN       [0,5)   F      12.8  2011 </span></span>
+<span id="cb3-107"><a href="#cb3-107"></a><span class="co">#&gt;  2 BAN       [0,5)   M      14.7  2011 </span></span>
+<span id="cb3-108"><a href="#cb3-108"></a><span class="co">#&gt;  3 BAN       [5,10)  F       2.14 2011 </span></span>
+<span id="cb3-109"><a href="#cb3-109"></a><span class="co">#&gt;  4 BAN       [5,10)  M       4.20 2011 </span></span>
+<span id="cb3-110"><a href="#cb3-110"></a><span class="co">#&gt;  5 BAN       [10,15) F       2.17 2011 </span></span>
+<span id="cb3-111"><a href="#cb3-111"></a><span class="co">#&gt;  6 BAN       [10,15) M       2.99 2011 </span></span>
+<span id="cb3-112"><a href="#cb3-112"></a><span class="co">#&gt;  7 BAN       [15,20) F       3.14 2011 </span></span>
+<span id="cb3-113"><a href="#cb3-113"></a><span class="co">#&gt;  8 BAN       [15,20) M       7.24 2011 </span></span>
+<span id="cb3-114"><a href="#cb3-114"></a><span class="co">#&gt;  9 BAN       [20,25) F       2.77 2011 </span></span>
+<span id="cb3-115"><a href="#cb3-115"></a><span class="co">#&gt; 10 BAN       [20,25) M       8.75 2011 </span></span>
+<span id="cb3-116"><a href="#cb3-116"></a><span class="co">#&gt; # ... with 25,190 more rows</span></span></code></pre></div>
+<p>Clean population data</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">clean_pop</span>()</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a></span>
+<span id="cb4-35"><a href="#cb4-35"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a></span>
+<span id="cb4-37"><a href="#cb4-37"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a></span>
+<span id="cb4-39"><a href="#cb4-39"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a></span>
+<span id="cb4-41"><a href="#cb4-41"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a></span>
+<span id="cb4-43"><a href="#cb4-43"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a></span>
+<span id="cb4-45"><a href="#cb4-45"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a></span>
+<span id="cb4-47"><a href="#cb4-47"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a></span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a></span>
+<span id="cb4-51"><a href="#cb4-51"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a></span>
+<span id="cb4-53"><a href="#cb4-53"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a></span>
+<span id="cb4-57"><a href="#cb4-57"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-58"><a href="#cb4-58"></a></span>
+<span id="cb4-59"><a href="#cb4-59"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a></span>
+<span id="cb4-61"><a href="#cb4-61"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a></span>
+<span id="cb4-63"><a href="#cb4-63"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-64"><a href="#cb4-64"></a></span>
+<span id="cb4-65"><a href="#cb4-65"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a></span>
+<span id="cb4-67"><a href="#cb4-67"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a></span>
+<span id="cb4-69"><a href="#cb4-69"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-70"><a href="#cb4-70"></a></span>
+<span id="cb4-71"><a href="#cb4-71"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a></span>
+<span id="cb4-73"><a href="#cb4-73"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a></span>
+<span id="cb4-75"><a href="#cb4-75"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a></span>
+<span id="cb4-77"><a href="#cb4-77"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a></span>
+<span id="cb4-79"><a href="#cb4-79"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-80"><a href="#cb4-80"></a></span>
+<span id="cb4-81"><a href="#cb4-81"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a></span>
+<span id="cb4-83"><a href="#cb4-83"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a></span>
+<span id="cb4-85"><a href="#cb4-85"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a></span>
+<span id="cb4-87"><a href="#cb4-87"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a></span>
+<span id="cb4-89"><a href="#cb4-89"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-90"><a href="#cb4-90"></a></span>
+<span id="cb4-91"><a href="#cb4-91"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-92"><a href="#cb4-92"></a></span>
+<span id="cb4-93"><a href="#cb4-93"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-94"><a href="#cb4-94"></a></span>
+<span id="cb4-95"><a href="#cb4-95"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-96"><a href="#cb4-96"></a></span>
+<span id="cb4-97"><a href="#cb4-97"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a></span>
+<span id="cb4-99"><a href="#cb4-99"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-100"><a href="#cb4-100"></a></span>
+<span id="cb4-101"><a href="#cb4-101"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-102"><a href="#cb4-102"></a></span>
+<span id="cb4-103"><a href="#cb4-103"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb4-104"><a href="#cb4-104"></a><span class="co">#&gt; # A tibble: 123,624 x 5</span></span>
+<span id="cb4-105"><a href="#cb4-105"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb4-106"><a href="#cb4-106"></a><span class="co">#&gt;    age   ETH.group sex      pop year </span></span>
+<span id="cb4-107"><a href="#cb4-107"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb4-108"><a href="#cb4-108"></a><span class="co">#&gt;  1 0     BAN       F      4844. 2011 </span></span>
+<span id="cb4-109"><a href="#cb4-109"></a><span class="co">#&gt;  2 0     BAN       M      4884. 2011 </span></span>
+<span id="cb4-110"><a href="#cb4-110"></a><span class="co">#&gt;  3 0     BLA       F     10529. 2011 </span></span>
+<span id="cb4-111"><a href="#cb4-111"></a><span class="co">#&gt;  4 0     BLA       M     10806. 2011 </span></span>
+<span id="cb4-112"><a href="#cb4-112"></a><span class="co">#&gt;  5 0     BLC       F      2728. 2011 </span></span>
+<span id="cb4-113"><a href="#cb4-113"></a><span class="co">#&gt;  6 0     BLC       M      2736. 2011 </span></span>
+<span id="cb4-114"><a href="#cb4-114"></a><span class="co">#&gt;  7 0     CHI       F      1816. 2011 </span></span>
+<span id="cb4-115"><a href="#cb4-115"></a><span class="co">#&gt;  8 0     CHI       M      2125. 2011 </span></span>
+<span id="cb4-116"><a href="#cb4-116"></a><span class="co">#&gt;  9 0     IND       F      9749. 2011 </span></span>
+<span id="cb4-117"><a href="#cb4-117"></a><span class="co">#&gt; 10 0     IND       M      9994. 2011 </span></span>
+<span id="cb4-118"><a href="#cb4-118"></a><span class="co">#&gt; # ... with 123,614 more rows</span></span></code></pre></div>
+<p>Clean in-migration data</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">clean_inmigrants</span>()</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a></span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a></span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a></span>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a></span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a></span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-48"><a href="#cb5-48"></a></span>
+<span id="cb5-49"><a href="#cb5-49"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-50"><a href="#cb5-50"></a></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a></span>
+<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-54"><a href="#cb5-54"></a></span>
+<span id="cb5-55"><a href="#cb5-55"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-56"><a href="#cb5-56"></a></span>
+<span id="cb5-57"><a href="#cb5-57"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-58"><a href="#cb5-58"></a></span>
+<span id="cb5-59"><a href="#cb5-59"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-60"><a href="#cb5-60"></a></span>
+<span id="cb5-61"><a href="#cb5-61"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a></span>
+<span id="cb5-63"><a href="#cb5-63"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-64"><a href="#cb5-64"></a></span>
+<span id="cb5-65"><a href="#cb5-65"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-66"><a href="#cb5-66"></a></span>
+<span id="cb5-67"><a href="#cb5-67"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-68"><a href="#cb5-68"></a></span>
+<span id="cb5-69"><a href="#cb5-69"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-70"><a href="#cb5-70"></a></span>
+<span id="cb5-71"><a href="#cb5-71"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-72"><a href="#cb5-72"></a></span>
+<span id="cb5-73"><a href="#cb5-73"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-74"><a href="#cb5-74"></a></span>
+<span id="cb5-75"><a href="#cb5-75"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-76"><a href="#cb5-76"></a></span>
+<span id="cb5-77"><a href="#cb5-77"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-78"><a href="#cb5-78"></a></span>
+<span id="cb5-79"><a href="#cb5-79"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-80"><a href="#cb5-80"></a></span>
+<span id="cb5-81"><a href="#cb5-81"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-82"><a href="#cb5-82"></a></span>
+<span id="cb5-83"><a href="#cb5-83"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-84"><a href="#cb5-84"></a></span>
+<span id="cb5-85"><a href="#cb5-85"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-86"><a href="#cb5-86"></a></span>
+<span id="cb5-87"><a href="#cb5-87"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-88"><a href="#cb5-88"></a></span>
+<span id="cb5-89"><a href="#cb5-89"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-90"><a href="#cb5-90"></a></span>
+<span id="cb5-91"><a href="#cb5-91"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-92"><a href="#cb5-92"></a></span>
+<span id="cb5-93"><a href="#cb5-93"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-94"><a href="#cb5-94"></a></span>
+<span id="cb5-95"><a href="#cb5-95"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-96"><a href="#cb5-96"></a></span>
+<span id="cb5-97"><a href="#cb5-97"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-98"><a href="#cb5-98"></a></span>
+<span id="cb5-99"><a href="#cb5-99"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-100"><a href="#cb5-100"></a></span>
+<span id="cb5-101"><a href="#cb5-101"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb5-102"><a href="#cb5-102"></a><span class="co">#&gt; # A tibble: 121,200 x 5</span></span>
+<span id="cb5-103"><a href="#cb5-103"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb5-104"><a href="#cb5-104"></a><span class="co">#&gt;    age   ETH.group sex   inmigrants year </span></span>
+<span id="cb5-105"><a href="#cb5-105"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb5-106"><a href="#cb5-106"></a><span class="co">#&gt;  1 0     BAN       F           192. 2011 </span></span>
+<span id="cb5-107"><a href="#cb5-107"></a><span class="co">#&gt;  2 0     BAN       M           196. 2011 </span></span>
+<span id="cb5-108"><a href="#cb5-108"></a><span class="co">#&gt;  3 0     BLA       F          1039. 2011 </span></span>
+<span id="cb5-109"><a href="#cb5-109"></a><span class="co">#&gt;  4 0     BLA       M          1009. 2011 </span></span>
+<span id="cb5-110"><a href="#cb5-110"></a><span class="co">#&gt;  5 0     BLC       F           259. 2011 </span></span>
+<span id="cb5-111"><a href="#cb5-111"></a><span class="co">#&gt;  6 0     BLC       M           262. 2011 </span></span>
+<span id="cb5-112"><a href="#cb5-112"></a><span class="co">#&gt;  7 0     CHI       F           172. 2011 </span></span>
+<span id="cb5-113"><a href="#cb5-113"></a><span class="co">#&gt;  8 0     CHI       M           211. 2011 </span></span>
+<span id="cb5-114"><a href="#cb5-114"></a><span class="co">#&gt;  9 0     IND       F           672. 2011 </span></span>
+<span id="cb5-115"><a href="#cb5-115"></a><span class="co">#&gt; 10 0     IND       M           694. 2011 </span></span>
+<span id="cb5-116"><a href="#cb5-116"></a><span class="co">#&gt; # ... with 121,190 more rows</span></span></code></pre></div>
+<p>Clean out-migration data</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">clean_outmigrants</span>()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; Warning: 1 parsing failure.</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; row col    expected     actual                                                                                          file</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt; 620  -- 208 columns 48 columns &#39;C:/Users/ngreen1/Documents/data/Respository/Leeds1/OutMigrants//OutMig_2011_2012_LEEDS1.csv&#39;</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a></span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a></span>
+<span id="cb6-29"><a href="#cb6-29"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a></span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a></span>
+<span id="cb6-39"><a href="#cb6-39"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-40"><a href="#cb6-40"></a></span>
+<span id="cb6-41"><a href="#cb6-41"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a></span>
+<span id="cb6-43"><a href="#cb6-43"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-44"><a href="#cb6-44"></a></span>
+<span id="cb6-45"><a href="#cb6-45"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-46"><a href="#cb6-46"></a></span>
+<span id="cb6-47"><a href="#cb6-47"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-48"><a href="#cb6-48"></a></span>
+<span id="cb6-49"><a href="#cb6-49"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a></span>
+<span id="cb6-51"><a href="#cb6-51"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a></span>
+<span id="cb6-53"><a href="#cb6-53"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-54"><a href="#cb6-54"></a></span>
+<span id="cb6-55"><a href="#cb6-55"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-56"><a href="#cb6-56"></a></span>
+<span id="cb6-57"><a href="#cb6-57"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-58"><a href="#cb6-58"></a></span>
+<span id="cb6-59"><a href="#cb6-59"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-60"><a href="#cb6-60"></a></span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-62"><a href="#cb6-62"></a></span>
+<span id="cb6-63"><a href="#cb6-63"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-64"><a href="#cb6-64"></a></span>
+<span id="cb6-65"><a href="#cb6-65"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-66"><a href="#cb6-66"></a></span>
+<span id="cb6-67"><a href="#cb6-67"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-68"><a href="#cb6-68"></a></span>
+<span id="cb6-69"><a href="#cb6-69"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-70"><a href="#cb6-70"></a></span>
+<span id="cb6-71"><a href="#cb6-71"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-72"><a href="#cb6-72"></a></span>
+<span id="cb6-73"><a href="#cb6-73"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-74"><a href="#cb6-74"></a></span>
+<span id="cb6-75"><a href="#cb6-75"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-76"><a href="#cb6-76"></a></span>
+<span id="cb6-77"><a href="#cb6-77"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-78"><a href="#cb6-78"></a></span>
+<span id="cb6-79"><a href="#cb6-79"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-80"><a href="#cb6-80"></a></span>
+<span id="cb6-81"><a href="#cb6-81"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-82"><a href="#cb6-82"></a></span>
+<span id="cb6-83"><a href="#cb6-83"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-84"><a href="#cb6-84"></a></span>
+<span id="cb6-85"><a href="#cb6-85"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-86"><a href="#cb6-86"></a></span>
+<span id="cb6-87"><a href="#cb6-87"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-88"><a href="#cb6-88"></a></span>
+<span id="cb6-89"><a href="#cb6-89"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-90"><a href="#cb6-90"></a></span>
+<span id="cb6-91"><a href="#cb6-91"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-92"><a href="#cb6-92"></a></span>
+<span id="cb6-93"><a href="#cb6-93"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-94"><a href="#cb6-94"></a></span>
+<span id="cb6-95"><a href="#cb6-95"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-96"><a href="#cb6-96"></a></span>
+<span id="cb6-97"><a href="#cb6-97"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-98"><a href="#cb6-98"></a></span>
+<span id="cb6-99"><a href="#cb6-99"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-100"><a href="#cb6-100"></a></span>
+<span id="cb6-101"><a href="#cb6-101"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-102"><a href="#cb6-102"></a></span>
+<span id="cb6-103"><a href="#cb6-103"></a><span class="co">#&gt; Warning: Missing column names filled in: &#39;X1&#39; [1]</span></span>
+<span id="cb6-104"><a href="#cb6-104"></a><span class="co">#&gt; # A tibble: 119,180 x 5</span></span>
+<span id="cb6-105"><a href="#cb6-105"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb6-106"><a href="#cb6-106"></a><span class="co">#&gt;    age   ETH.group sex   outmigrants year </span></span>
+<span id="cb6-107"><a href="#cb6-107"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb6-108"><a href="#cb6-108"></a><span class="co">#&gt;  1 0     WBI       F          13509. 2011 </span></span>
+<span id="cb6-109"><a href="#cb6-109"></a><span class="co">#&gt;  2 0     WBI       M          14354. 2011 </span></span>
+<span id="cb6-110"><a href="#cb6-110"></a><span class="co">#&gt;  3 0     WHO       F             NA  2011 </span></span>
+<span id="cb6-111"><a href="#cb6-111"></a><span class="co">#&gt;  4 0     WHO       M           1401. 2011 </span></span>
+<span id="cb6-112"><a href="#cb6-112"></a><span class="co">#&gt;  5 1     WBI       F          12805. 2011 </span></span>
+<span id="cb6-113"><a href="#cb6-113"></a><span class="co">#&gt;  6 1     WBI       M          13456. 2011 </span></span>
+<span id="cb6-114"><a href="#cb6-114"></a><span class="co">#&gt;  7 1     WHO       F             NA  2011 </span></span>
+<span id="cb6-115"><a href="#cb6-115"></a><span class="co">#&gt;  8 1     WHO       M           1274. 2011 </span></span>
+<span id="cb6-116"><a href="#cb6-116"></a><span class="co">#&gt;  9 10    WBI       F           6016. 2011 </span></span>
+<span id="cb6-117"><a href="#cb6-117"></a><span class="co">#&gt; 10 10    WBI       M           6229. 2011 </span></span>
+<span id="cb6-118"><a href="#cb6-118"></a><span class="co">#&gt; # ... with 119,170 more rows</span></span></code></pre></div>
 
 
 

@@ -1,14 +1,21 @@
 Package: cleanETHPOP
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title:  Clean ETHPOP Data For Use in a TB DES Model
+Version: 0.0.0.9000
+Description: The ETHPOP database makes ethnic population projections for the UK's local areas available to stakeholders,
+             practitioners and other interested users.
+Authors@R: 
+    person(given = "Nathan",
+           family = "Green",
+           role = c("aut", "cre"),
+           email = "nathan.green@imperial.ac.uk",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Imports:
+    dplyr,
+    readr
 Suggests: 
     knitr,
     rmarkdown

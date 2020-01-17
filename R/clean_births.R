@@ -5,8 +5,9 @@
 #' @param rtn
 #' @param save_to_file
 #' @param save_name
-#' @param save_path
+#' @param save_folder
 #' @param save_format
+#' @param m_to_100_f
 #'
 #' @return
 #' @export
@@ -16,10 +17,11 @@
 #'   clean_births()
 #'
 clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository/Leeds1/Births",
+                         m_to_100_f = 105,
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_births",
-                         save_path = "output_data",
+                         save_folder = "output_data",
                          save_format = "csv") {
 
   file_names <- list.files(dir_path)
@@ -38,7 +40,9 @@ clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
       dat %>%
       filter(grepl('E', LAD.code)) %>%
       group_by(ETH.group) %>%
-      summarise(births = sum(BirthsAll)) %>%
+      summarise(tot_births = sum(BirthsAll),
+                mbirths = tot_births*m_to_100_f/(m_to_100_f + 100),
+                fbirths = tot_births*100/(m_to_100_f + 100)) %>%
       mutate(year = year_name) #%>%
     # merge(ethnic_groups, all = TRUE)
   }
@@ -46,7 +50,13 @@ clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
   births_dat <- do.call(rbind, births_year)
 
   if (save_to_file) {
-    write.csv(births_dat, file = paste0(save_name, ".csv"))
+
+    save_fn <-
+      if(save_format == "csv") {write.csv}
+      else if(save_format == "RData") {save}
+
+    save_path <- paste0(save_folder, "/", save_name, ".", save_format)
+    write.csv(births_dat, file = save_path)
   }
 
   if (rtn)

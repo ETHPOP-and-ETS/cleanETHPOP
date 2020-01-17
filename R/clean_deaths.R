@@ -46,6 +46,7 @@ clean_deaths <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
       # clean age variable
       separate(variable, c("age", NA)) %>%
       separate(age, c("sex", "age"), sep = 1) %>%
+      mutate(age = gsub("p", "", age)) %>%
       # mutate(age = gsub(x = age, 'M|F', '')) %>%  # combine sex
 
       # group ages in to 5 year ranges
