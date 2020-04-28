@@ -15,11 +15,11 @@
 #' @examples
 #'   clean_deaths()
 #'
-clean_deaths <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository/Leeds1/Deaths",
+clean_deaths <- function(dir_path = here::here("rawdata", "Leeds1", "Deaths"),
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_deaths",
-                         save_path = "output_data",
+                         save_path = here::here("output_data"),
                          save_format = "csv") {
 
   file_names <- list.files(dir_path)

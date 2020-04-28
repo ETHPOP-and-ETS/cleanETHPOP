@@ -16,12 +16,12 @@
 #'   clean_pop()
 #'
 clean_pop <- function(
-  dir_path = "C:/Users/ngreen1/Documents/data/Respository/Leeds1/Population/",
+  dir_path = here::here("rawdata", "Leeds1", "Population"),
   rtn = TRUE,
   age_grp = FALSE,
   save_to_file = TRUE,
   save_name = "clean_pop",
-  save_folder = "output_data",
+  save_folder = here::here("output_data"),
   save_format = "csv") {
 
   file_names <- list.files(dir_path)

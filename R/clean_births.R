@@ -16,12 +16,12 @@
 #' @examples
 #'   clean_births()
 #'
-clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository/Leeds1/Births",
+clean_births <- function(dir_path = here::here("rawdata", "Leeds1", "Births"),
                          m_to_100_f = 105,
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_births",
-                         save_folder = "output_data",
+                         save_folder = here::here("output_data"),
                          save_format = "csv") {
 
   file_names <- list.files(dir_path)
@@ -47,8 +47,16 @@ clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
     # merge(ethnic_groups, all = TRUE)
   }
 
-  births_dat <- do.call(rbind, births_year)
-
+  births_dat <-
+    do.call(rbind, births_year) %>%
+    melt(id.vars = c("ETH.group", "year"),
+         variable.name = "sex") %>%
+    rename(births = value) %>%
+    mutate(sex = ifelse(sex == "mbirths",
+                        "M",
+                        ifelse(sex == "fbirths",
+                               "F",
+                               "person")))
   if (save_to_file) {
 
     save_fn <-
@@ -60,5 +68,5 @@ clean_births <- function(dir_path = "C:/Users/ngreen1/Documents/data/Respository
   }
 
   if (rtn)
-    return(births_dat)
+    as_tibble(births_dat)
 }
