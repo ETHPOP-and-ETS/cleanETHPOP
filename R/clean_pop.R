@@ -62,7 +62,8 @@ clean_pop <- function(
                sex,
                add = TRUE) %>%
       summarise(pop = sum(value)) %>%
-      mutate(year = year_name)
+      mutate(year = year_name) %>%
+      ungroup()
   }
 
   pop_dat <- do.call(rbind, pop_year)

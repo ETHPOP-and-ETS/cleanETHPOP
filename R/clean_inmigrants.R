@@ -66,7 +66,8 @@ clean_inmigrants <- function(
                sex,
                add = TRUE) %>%
       summarise(inmigrants = sum(value)) %>%
-      mutate(year = year_name)
+      mutate(year = year_name) %>%
+      ungroup()
   }
 
   inmigrants_dat <- do.call(rbind, inmigrants_year)

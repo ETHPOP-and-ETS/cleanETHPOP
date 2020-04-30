@@ -59,7 +59,8 @@ clean_deaths <- function(dir_path = here::here("rawdata", "Leeds1", "Deaths"),
                agegrp,
                sex) %>%
       summarise(deaths = sum(value)) %>%
-      mutate(year = year_name)
+      mutate(year = year_name) %>%
+      ungroup()
 
       #%>%
       # add ethnicity description
