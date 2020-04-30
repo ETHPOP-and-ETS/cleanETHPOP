@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
-<title>How to use package</title>
+<title>How to use cleanETHPOP</title>
 
 
 
@@ -118,9 +117,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -289,7 +285,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -302,118 +299,135 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 
-<h1 class="title toc-ignore">How to use package</h1>
+<h1 class="title toc-ignore">How to use cleanETHPOP</h1>
 
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(cleanETHPOP)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt; </span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; </span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt;     filter, lag</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="kw">library</span>(tidyr)</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">library</span>(readr)</span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">library</span>(reshape2)</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; Attaching package: &#39;reshape2&#39;</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; The following object is masked from &#39;package:tidyr&#39;:</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt; </span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt;     smiths</span></span></code></pre></div>
-<p>Clean birth data</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">clean_births</span>()</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt; # A tibble: 600 x 5</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    ETH.group tot_births mbirths fbirths year </span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;    &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  1 BAN           12971.   6644.   6327. 2011 </span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  2 BLA           21226.  10872.  10354. 2011 </span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  3 BLC            6479.   3319.   3161. 2011 </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  4 CHI            4441.   2275.   2166. 2011 </span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  5 IND           26853.  13754.  13099. 2011 </span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  6 MIX           36887.  18894.  17994. 2011 </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  7 OAS           13712.   7023.   6689. 2011 </span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  8 OBL            3833.   1963.   1870. 2011 </span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;  9 OTH            4704.   2410.   2295. 2011 </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 10 PAK           33370.  17092.  16278. 2011 </span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; # ... with 590 more rows</span></span></code></pre></div>
-<p>Clean death data</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">clean_deaths</span>()</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; # A tibble: 25,200 x 5</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; # Groups:   ETH.group, agegrp [252]</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;    ETH.group agegrp  sex   deaths year </span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  1 BAN       [0,5)   F      12.8  2011 </span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  2 BAN       [0,5)   M      14.7  2011 </span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  3 BAN       [5,10)  F       2.14 2011 </span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  4 BAN       [5,10)  M       4.20 2011 </span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  5 BAN       [10,15) F       2.17 2011 </span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  6 BAN       [10,15) M       2.99 2011 </span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  7 BAN       [15,20) F       3.14 2011 </span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt;  8 BAN       [15,20) M       7.24 2011 </span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt;  9 BAN       [20,25) F       2.77 2011 </span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; 10 BAN       [20,25) M       8.75 2011 </span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; # ... with 25,190 more rows</span></span></code></pre></div>
-<p>Clean population data</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">clean_pop</span>()</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; # A tibble: 123,624 x 5</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;    age   ETH.group sex      pop year </span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  1 0     BAN       F      4844. 2011 </span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  2 0     BAN       M      4884. 2011 </span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  3 0     BLA       F     10529. 2011 </span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  4 0     BLA       M     10806. 2011 </span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  5 0     BLC       F      2728. 2011 </span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  6 0     BLC       M      2736. 2011 </span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  7 0     CHI       F      1816. 2011 </span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt;  8 0     CHI       M      2125. 2011 </span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt;  9 0     IND       F      9749. 2011 </span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; 10 0     IND       M      9994. 2011 </span></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; # ... with 123,614 more rows</span></span></code></pre></div>
-<p>Clean in-migration data</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">clean_inmigrants</span>()</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; # A tibble: 121,200 x 5</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;    age   ETH.group sex   inmigrants year </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  1 0     BAN       F           192. 2011 </span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  2 0     BAN       M           196. 2011 </span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  3 0     BLA       F          1039. 2011 </span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  4 0     BLA       M          1009. 2011 </span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  5 0     BLC       F           259. 2011 </span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  6 0     BLC       M           262. 2011 </span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt;  7 0     CHI       F           172. 2011 </span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt;  8 0     CHI       M           211. 2011 </span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt;  9 0     IND       F           672. 2011 </span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 10 0     IND       M           694. 2011 </span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; # ... with 121,190 more rows</span></span></code></pre></div>
-<p>Clean out-migration data</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">setwd</span>(here<span class="op">::</span><span class="kw">here</span>())</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">clean_outmigrants</span>()</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; # A tibble: 119,180 x 5</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;    age   ETH.group sex   outmigrants year </span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  1 0     WBI       F          13509. 2011 </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  2 0     WBI       M          14354. 2011 </span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  3 0     WHO       F             NA  2011 </span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  4 0     WHO       M           1401. 2011 </span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  5 1     WBI       F          12805. 2011 </span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  6 1     WBI       M          13456. 2011 </span></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt;  7 1     WHO       F             NA  2011 </span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;  8 1     WHO       M           1274. 2011 </span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt;  9 10    WBI       F           6016. 2011 </span></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; 10 10    WBI       M           6229. 2011 </span></span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt; # ... with 119,170 more rows</span></span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">library</span>(readr)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">library</span>(reshape2)</span></code></pre></div>
+<div id="clean-birth-data" class="section level4">
+<h4>Clean birth data</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">clean_births</span>()</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt; # A tibble: 1,800 x 4</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;    ETH.group year  sex    births</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt;  1 BAN       2011  person 12971.</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;  2 BLA       2011  person 21226.</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;  3 BLC       2011  person  6479.</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;  4 CHI       2011  person  4441.</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt;  5 IND       2011  person 26853.</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;  6 MIX       2011  person 36887.</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;  7 OAS       2011  person 13712.</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  8 OBL       2011  person  3833.</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  9 OTH       2011  person  4704.</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 10 PAK       2011  person 33370.</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; # ... with 1,790 more rows</span></span></code></pre></div>
+</div>
+<div id="clean-death-data" class="section level4">
+<h4>Clean death data</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">clean_deaths</span>()</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; # A tibble: 25,200 x 5</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; # Groups:   ETH.group, agegrp [252]</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;    ETH.group agegrp  sex   deaths year </span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;fct&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  1 BAN       [0,5)   F      38.9  2011 </span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  2 BAN       [0,5)   M      45.7  2011 </span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  3 BAN       [5,10)  F       2.14 2011 </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  4 BAN       [5,10)  M       4.20 2011 </span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  5 BAN       [10,15) F       2.17 2011 </span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  6 BAN       [10,15) M       2.99 2011 </span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  7 BAN       [15,20) F       3.14 2011 </span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  8 BAN       [15,20) M       7.24 2011 </span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt;  9 BAN       [20,25) F       2.77 2011 </span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; 10 BAN       [20,25) M       8.75 2011 </span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; # ... with 25,190 more rows</span></span></code></pre></div>
+</div>
+<div id="clean-population-data" class="section level4">
+<h4>Clean population data</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">clean_pop</span>()</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; # A tibble: 123,624 x 5</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;    age   ETH.group sex      pop year </span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  1 0     BAN       F      4844. 2011 </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  2 0     BAN       M      4884. 2011 </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  3 0     BLA       F     10529. 2011 </span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  4 0     BLA       M     10806. 2011 </span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  5 0     BLC       F      2728. 2011 </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  6 0     BLC       M      2736. 2011 </span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  7 0     CHI       F      1816. 2011 </span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  8 0     CHI       M      2125. 2011 </span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt;  9 0     IND       F      9749. 2011 </span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; 10 0     IND       M      9994. 2011 </span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; # ... with 123,614 more rows</span></span></code></pre></div>
+</div>
+<div id="clean-in-migration-data" class="section level4">
+<h4>Clean in-migration data</h4>
+<p>There are 2 different scenario available:</p>
+<ul>
+<li>‘Leeds1’: BREXIT scenario</li>
+<li>‘Leeds2’: ONS aligned scenario</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># where_data &lt;- here::here(&quot;rawdata&quot;, &quot;Leeds1&quot;, &quot;InMigrants&quot;)</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>where_data &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;rawdata&quot;</span>, <span class="st">&quot;Leeds2&quot;</span>, <span class="st">&quot;InMigrants&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">clean_inmigrants</span>(<span class="dt">dir_path =</span> where_data)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; # A tibble: 121,200 x 5</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;    age   ETH.group sex   inmigrants year </span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  1 0     BAN       F           18.1 2011 </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  2 0     BAN       M           15.6 2011 </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  3 0     BLA       F          145.  2011 </span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  4 0     BLA       M          107.  2011 </span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt;  5 0     BLC       F           15.3 2011 </span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt;  6 0     BLC       M           10.7 2011 </span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt;  7 0     CHI       F           58.0 2011 </span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt;  8 0     CHI       M           40.9 2011 </span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt;  9 0     IND       F          114.  2011 </span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; 10 0     IND       M           92.0 2011 </span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; # ... with 121,190 more rows</span></span></code></pre></div>
+</div>
+<div id="clean-out-migration-data" class="section level4">
+<h4>Clean out-migration data</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">clean_outmigrants</span>()</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; # A tibble: 119,180 x 5</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; # Groups:   age, ETH.group [1,212]</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;    age   ETH.group sex   outmigrants year </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  1 0     WBI       F          13509. 2011 </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  2 0     WBI       M          14354. 2011 </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  3 0     WHO       F             NA  2011 </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  4 0     WHO       M           1401. 2011 </span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  5 1     WBI       F          12805. 2011 </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  6 1     WBI       M          13456. 2011 </span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  7 1     WHO       F             NA  2011 </span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt;  8 1     WHO       M           1274. 2011 </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt;  9 10    WBI       F           6016. 2011 </span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; 10 10    WBI       M           6229. 2011 </span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; # ... with 119,170 more rows</span></span></code></pre></div>
+</div>
+<div id="create-out-migration-per-capital-data" class="section level4">
+<h4>Create out-migration per capital data</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">outmigrants_per_capita</span>()</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; # A tibble: 119,180 x 6</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    sex     age ETH.group  year ETH_fac outmigrants_per_capita</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;    &lt;fct&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;                    &lt;dbl&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  1 F         0 BAN        2012 BAN                     0.0398</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  2 F         0 BAN        2013 BAN                     0.0398</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  3 F         0 BAN        2014 BAN                     0.0398</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  4 F         0 BAN        2015 BAN                     0.0398</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  5 F         0 BAN        2016 BAN                     0.0397</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  6 F         0 BAN        2017 BAN                     0.0396</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  7 F         0 BAN        2018 BAN                     0.0395</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  8 F         0 BAN        2019 BAN                     0.0394</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt;  9 F         0 BAN        2020 BAN                     0.0393</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 10 F         0 BAN        2021 BAN                     0.0392</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; # ... with 119,170 more rows</span></span></code></pre></div>
+</div>
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "How to use package"
+title: "How to use cleanETHPOP"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{how-to-use-package}

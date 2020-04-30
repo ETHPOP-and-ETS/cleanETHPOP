@@ -1,12 +1,12 @@
 
 #' clean_deaths
 #'
-#' @param dir_path
-#' @param rtn
-#' @param save_to_file
-#' @param save_name
-#' @param save_path
-#' @param save_format
+#' @param dir_path location of ETHPOP data
+#' @param rtn TRUE/FALSE
+#' @param save_to_file TRUE/FALSE
+#' @param save_name output data file
+#' @param save_path output data location
+#' @param save_format e.g. csv or RData
 #'
 #' @return
 #' @export
@@ -36,6 +36,8 @@ clean_deaths <- function(dir_path = here::here("rawdata", "Leeds1", "Deaths"),
 
     deaths_year[[i]] <-
       dat %>%
+      mutate(M0.1 = MB.0 + M0.1,
+             F0.1 = FB.0 + F0.1) %>%
       select(-MB.0, -FB.0) %>%
       filter(grepl('E', LAD.code)) %>%
       group_by(ETH.group) %>%
@@ -67,7 +69,7 @@ clean_deaths <- function(dir_path = here::here("rawdata", "Leeds1", "Deaths"),
   deaths_dat <- do.call(rbind, deaths_year)
 
   if (save_to_file) {
-    write.csv(deaths_dat, file = paste0(save_name, ".csv"))
+    write.csv(deaths_dat, file = paste0(save_path, "/", save_name, ".csv"))
   }
 
   if (rtn)
