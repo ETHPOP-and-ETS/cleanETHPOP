@@ -1,7 +1,7 @@
 
 #' clean_inmigrants
 #'
-#' @param dir_path string file address
+#' @param dir_path string file address. this is either Leeds1 or Leeds2.
 #' @param rtn
 #' @param save_to_file
 #' @param save_name

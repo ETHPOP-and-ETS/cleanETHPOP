@@ -17,7 +17,7 @@
 #'   clean_outmigrants()
 #'
 clean_outmigrants <- function(
-  dir_path = here::here("rawdata", "Leeds1", "OutMigrants"),
+  dir_path = system.file("extdata", "Leeds1", "OutMigrants", package = "cleanETHPOP"),
   rtn = TRUE,
   age_grp = FALSE,
   save_to_file = TRUE,

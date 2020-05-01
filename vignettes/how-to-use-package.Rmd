@@ -48,8 +48,8 @@ There are 2 different scenario available:
 - 'Leeds2': ONS aligned scenario
 
 ```{r message = FALSE, warning=FALSE}
-# where_data <- here::here("rawdata", "Leeds1", "InMigrants")
-where_data <- here::here("rawdata", "Leeds2", "InMigrants")
+# where_data <- system.file("extdata", "Leeds1", "InMigrants", package = "cleanETHPOP")
+where_data <- system.file("extdata", "Leeds2", "InMigrants", package = "cleanETHPOP")
 
 clean_inmigrants(dir_path = where_data)
 ```

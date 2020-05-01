@@ -15,7 +15,7 @@
 #' @examples
 #'   clean_deaths()
 #'
-clean_deaths <- function(dir_path = here::here("rawdata", "Leeds1", "Deaths"),
+clean_deaths <- function(dir_path = system.file("extdata", "Leeds1", "Deaths", package = "cleanETHPOP"),
                          rtn = TRUE,
                          save_to_file = TRUE,
                          save_name = "clean_deaths",
