@@ -1,13 +1,13 @@
 
 #' clean_births
 #'
-#' @param dir_path
-#' @param rtn
-#' @param save_to_file
-#' @param save_name
-#' @param save_folder
-#' @param save_format
-#' @param m_to_100_f
+#' @param dir_path raw data location
+#' @param rtn TRUE/FALSE
+#' @param save_to_file TRUE/FALSE
+#' @param save_name string
+#' @param save_folder output data location
+#' @param save_format csv or RData
+#' @param m_to_100_f relative population sizes at birth from ONS
 #'
 #' @return
 #' @export
