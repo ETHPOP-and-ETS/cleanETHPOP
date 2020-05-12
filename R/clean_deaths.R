@@ -10,7 +10,7 @@
 #'
 #' @return
 #' @export
-#' @import dplyr, reshape2, tidyr
+#' @import dplyr, reshape2, tidyr, readr
 #'
 #' @examples
 #'   clean_deaths()
@@ -49,18 +49,19 @@ clean_deaths <- function(dir_path = system.file("extdata", "Leeds1", "Deaths", p
       separate(variable, c("age", NA)) %>%
       separate(age, c("sex", "age"), sep = 1) %>%
       mutate(age = gsub("p", "", age)) %>%
+      rename(deaths = value) %>%
       # mutate(age = gsub(x = age, 'M|F', '')) %>%  # combine sex
 
       # group ages in to 5 year ranges
       mutate(agegrp = cut(as.numeric(age),
                           breaks = seq(0, 105, by = 5),
                           right = FALSE)) %>%
-      group_by(ETH.group,
-               agegrp,
-               sex) %>%
-      summarise(deaths = sum(value)) %>%
-      mutate(year = year_name) %>%
-      ungroup()
+      # group_by(ETH.group,
+      #          agegrp,
+      #          sex) %>%
+      # summarise(deaths = sum(deaths)) %>%
+      # ungroup() %>%
+      mutate(year = year_name)
 
       #%>%
       # add ethnicity description
@@ -70,6 +71,8 @@ clean_deaths <- function(dir_path = system.file("extdata", "Leeds1", "Deaths", p
   deaths_dat <- do.call(rbind, deaths_year)
 
   if (save_to_file) {
+
+    message(paste("Output saved to", paste0(save_path, "/", save_name, ".csv")))
     write.csv(deaths_dat, file = paste0(save_path, "/", save_name, ".csv"))
   }
 
