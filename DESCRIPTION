@@ -1,6 +1,6 @@
 Package: cleanETHPOP
 Type: Package
-Title:  Clean ETHPOP Data For Use in a TB DES Model
+Title: Clean ETHPOP Data For Use in a TB DES Model
 Version: 0.0.0.9000
 Description: The ETHPOP database makes ethnic population projections for the UK's local areas available to stakeholders,
              practitioners and other interested users.
@@ -20,3 +20,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.1.0
