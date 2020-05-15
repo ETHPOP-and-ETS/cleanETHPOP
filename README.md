@@ -23,7 +23,7 @@ You can install the development version from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("n8thangreen/cleanETHPOP")
+devtools::install_github("ETHPOP-and-ETS/cleanETHPOP")
 ```
 
 For a document of how to use cleanETHPOP see
