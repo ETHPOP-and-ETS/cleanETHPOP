@@ -26,19 +26,31 @@ library(reshape2)
 #### Clean birth data
 
 ```{r message = FALSE, warning=FALSE}
-clean_births()
+where_data_Leeds1 <- system.file("extdata", "Leeds1", "Births", package = "cleanETHPOP")
+where_data_Leeds2 <- system.file("extdata", "Leeds2", "Births", package = "cleanETHPOP")
+
+clean_births(dir_path = where_data_Leeds1, save_name = "clean_births_Leeds1")
+clean_births(dir_path = where_data_Leeds2, save_name = "clean_births_Leeds2")
 ```
 
 #### Clean death data
 
 ```{r message = FALSE, warning=FALSE}
-clean_deaths()
+where_data_Leeds1 <- system.file("extdata", "Leeds1", "Deaths", package = "cleanETHPOP")
+where_data_Leeds2 <- system.file("extdata", "Leeds2", "Deaths", package = "cleanETHPOP")
+
+clean_deaths(dir_path = where_data_Leeds1, save_name = "clean_deaths_Leeds1")
+clean_deaths(dir_path = where_data_Leeds2, save_name = "clean_deaths_Leeds2")
 ```
 
 #### Clean population data
 
 ```{r message = FALSE, warning=FALSE}
-clean_pop()
+where_data_Leeds1 <- system.file("extdata", "Leeds1", "Population", package = "cleanETHPOP")
+where_data_Leeds2 <- system.file("extdata", "Leeds2", "Population", package = "cleanETHPOP")
+
+clean_pop(dir_path = where_data_Leeds1, save_name = "clean_pop_Leeds1")
+clean_pop(dir_path = where_data_Leeds2, save_name = "clean_pop_Leeds2")
 ```
 
 #### Clean in-migration data

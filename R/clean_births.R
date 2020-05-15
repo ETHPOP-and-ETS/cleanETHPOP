@@ -34,7 +34,7 @@ clean_births <- function(dir_path = system.file("extdata", "Leeds1", "Births", p
   for (i in seq_along(file_names)) {
 
     dat <- read_csv(paste(dir_path, file_names[i], sep = "/"))
-    year_name  <- substr(file_names[i], start = 8, stop = 11)
+    year_name <- unlist(strsplit(file_names[i], "_"))[2]
 
     births_year[[i]] <-
       dat %>%

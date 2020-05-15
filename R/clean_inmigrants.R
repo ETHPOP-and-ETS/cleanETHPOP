@@ -33,7 +33,7 @@ clean_inmigrants <- function(
   for (i in seq_along(file_names)) {
 
     dat <- read_csv(paste(dir_path, file_names[i], sep = "/"))
-    year_name  <- substr(file_names[i], start = 7, stop = 10)
+    year_name <- unlist(strsplit(file_names[i], "_"))[2]
 
     inmigrants_year[[i]] <-
       dat %>%

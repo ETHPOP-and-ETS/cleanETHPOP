@@ -31,7 +31,7 @@ clean_pop <- function(
   for (i in seq_along(file_names)) {
 
     dat <- read_csv(paste(dir_path, file_names[i], sep = "/"))
-    year_name  <- substr(file_names[i], start = 11, stop = 14)
+    year_name <- substr(file_names[i], start = 11, stop = 14)
 
     pop_year[[i]] <-
       dat %>%
