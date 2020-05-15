@@ -26,7 +26,5 @@ You can install the development version from
 devtools::install_github("n8thangreen/cleanETHPOP")
 ```
 
-## Example
-
-For a vignette of how to use cleanETHPOP see
-[here](https://n8thangreen.github.io/cleanETHPOP/how-to-use-package.html).
+For a document of how to use cleanETHPOP see
+[here](https://ETHPOP-and-ETS.github.io/cleanETHPOP/how-to-use-package.html).
