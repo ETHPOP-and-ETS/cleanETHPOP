@@ -7,10 +7,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE
 )
 ```
 
@@ -48,21 +49,31 @@ There are 2 different scenario available:
 - 'Leeds2': ONS aligned scenario
 
 ```{r message = FALSE, warning=FALSE}
-# where_data <- system.file("extdata", "Leeds1", "InMigrants", package = "cleanETHPOP")
-where_data <- system.file("extdata", "Leeds2", "InMigrants", package = "cleanETHPOP")
+where_data_Leeds1 <- system.file("extdata", "Leeds1", "InMigrants", package = "cleanETHPOP")
+where_data_Leeds2 <- system.file("extdata", "Leeds2", "InMigrants", package = "cleanETHPOP")
 
-clean_inmigrants(dir_path = where_data)
+clean_inmigrants(dir_path = where_data_Leeds1, save_name = "clean_inmigrants_Leeds1")
+clean_inmigrants(dir_path = where_data_Leeds2, save_name = "clean_inmigrants_Leeds2")
 ```
 
 
 #### Clean out-migration data
 
 ```{r message = FALSE, warning=FALSE}
-clean_outmigrants()
+where_data_Leeds1 <- system.file("extdata", "Leeds1", "OutMigrants", package = "cleanETHPOP")
+where_data_Leeds2 <- system.file("extdata", "Leeds2", "OutMigrants", package = "cleanETHPOP")
+
+clean_outmigrants(dir_path = where_data_Leeds1, save_name = "clean_outmigrants_Leeds1")
+clean_outmigrants(dir_path = where_data_Leeds2, save_name = "clean_outmigrants_Leeds2")
 ```
 
 #### Create out-migration per capital data
 
 ```{r message = FALSE, warning=FALSE}
 outmigrants_per_capita()
+```
+
+```{r eval=FALSE, echo=FALSE}
+# run this to create html doc for GitHub
+rmarkdown::render("vignettes/how-to-use-package.Rmd", output_dir = "docs/", output_format = "html_document")
 ```
