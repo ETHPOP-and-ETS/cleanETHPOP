@@ -10,19 +10,19 @@
 #'
 #' @return
 #' @export
-#' @import dplyr
+#' @import dplyr, reshape2, tidyr
 #' @importFrom readr read_csv
 #' @examples
 #'   clean_pop()
 #'
-clean_pop <- function(
-  dir_path = system.file("extdata", "Leeds1", "Population", package = "cleanETHPOP"),
-  rtn = TRUE,
-  age_grp = FALSE,
-  save_to_file = TRUE,
-  save_name = "clean_pop",
-  save_folder = here::here("output_data"),
-  save_format = "csv") {
+clean_pop <- function(dir_path = system.file("extdata", "Leeds1", "Population",
+                                             package = "cleanETHPOP"),
+                      rtn = TRUE,
+                      age_grp = FALSE,
+                      save_to_file = TRUE,
+                      save_name = "clean_pop",
+                      save_folder = here::here("output_data"),
+                      save_format = "csv") {
 
   file_names <- list.files(dir_path)
 
